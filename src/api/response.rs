@@ -7,8 +7,8 @@ use serde::Serialize;
 
 #[derive(Serialize)]
 pub struct ApiResponse<T> {
-    pub data: Option<T>,
-    pub error: Option<ApiError>,
+    data: Option<T>,
+    error: Option<ApiError>,
 }
 
 #[derive(Serialize)]
@@ -40,5 +40,16 @@ impl<T> ApiResponse<T> {
         T: Serialize,
     {
         (status, Json(self)).into_response()
+    }
+
+    // Read-only accessors for testing modules if needed. The application
+    // must never access the fields directly but only use the above mentioned
+    // constructors
+    pub fn data(&self) -> Option<&T> {
+        self.data.as_ref()
+    }
+
+    pub fn error(&self) -> Option<&ApiError> {
+        self.error.as_ref()
     }
 }
