@@ -1,0 +1,12 @@
+# Job Server settings
+# [api]
+host="localhost"
+port=9000
+# shutdown_timeout = 5
+#
+# # Common HTTP Client settings
+# [api.http]
+# read_header_timeout = 5
+# read_timeout = 10
+# write_timeout = 10
+# idle_timeout = 30
