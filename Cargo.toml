@@ -11,3 +11,4 @@ tokio = { version = "1", features = ["macros", "rt-multi-thread", "net", "signal
 tracing = "0.1.44"
 tracing-subscriber = { version = "0.3.23", features = ["env-filter"] }
 tower-http = { version = "0.7.1", features = ["trace", "catch-panic"] }
+validator = {version = "0.21", features = ["derive"]}
