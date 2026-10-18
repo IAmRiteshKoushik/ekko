@@ -30,7 +30,7 @@ impl CreateUserRequest {
 
 pub async fn list() -> Response {
     ApiResponse::success(Vec::<CreateUserResponse>::new())
-        .into_response(StatusCode::OK)
+        .with_status(StatusCode::OK)
 }
 
 pub async fn create(Json(request): Json<CreateUserRequest>) -> Response {
@@ -39,7 +39,7 @@ pub async fn create(Json(request): Json<CreateUserRequest>) -> Response {
             "VALIDATION_ERROR",
             errors.to_string(),
         )
-        .into_response(StatusCode::BAD_REQUEST);
+        .with_status(StatusCode::BAD_REQUEST);
     }
 
     let user = CreateUserResponse {
@@ -47,5 +47,5 @@ pub async fn create(Json(request): Json<CreateUserRequest>) -> Response {
         name: request.name,
     };
 
-    ApiResponse::success(user).into_response(StatusCode::CREATED)
+    ApiResponse::success(user).with_status(StatusCode::CREATED)
 }

@@ -35,7 +35,7 @@ impl<T> ApiResponse<T> {
         }
     }
 
-    pub fn into_response(self, status: StatusCode) -> Response
+    pub fn with_status(self, status: StatusCode) -> Response
     where
         T: Serialize,
     {
